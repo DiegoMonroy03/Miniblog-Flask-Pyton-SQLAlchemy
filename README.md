@@ -1,4 +1,4 @@
-
+![Miniblog](https://github.com/DiegoMonroy03/Miniblog-Flask-Pyton-SQLAlchemy/blob/master/Blog1.png)
     
     
     
