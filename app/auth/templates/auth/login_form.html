@@ -1,0 +1,42 @@
+{% extends "base_template.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="card-body">
+    <img src="/static/img/img1.jpg" class="float-left" alt="Tu Block">
+    <img src="/static/img/img1.jpg" class="float-right" alt="Tu Block">
+</div>
+<div class="container pt-4">
+<div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+        <div class="text-center">
+    <div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <input type="text" name="email" placeholder="Email" class="form-control">
+                {% for error in form.email.errors %}
+                <span style="color: rgb(43, 255, 0);">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control">
+                {% for error in form.password.errors %}
+                <span style="color: rgb(43, 255, 0);">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>{{ form.remember_me() }} {{ form.remember_me.label }}</div>
+
+            <div class="form-group">
+                <input class="btn btn-dark" type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+    </div>
+    <div>¿No tienes cuenta? <a href="{{ url_for('auth.show_signup_form') }}">Regístrate</a></div>
+</div>
+</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base_template.html" %}
+
+{% block title %}Tutorial Flask: Miniblog{% endblock %}
+
+{% block content %}
+<div class="card-body">
+<img src="static/img/img1.jpg" class="float-left" alt="Tu Block">
+<img src="static/img/img1.jpg" class="float-right" alt="Tu Block">
+</div>
+<div class="container pt-4">
+<div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+        
+    <ul>
+    {% for post in post_pagination.items %}
+        <li><a href="{{ url_for('public.show_post', slug=post.title_slug) }}">{{ post.title }}</a></li>
+    {% else %}
+        <li>No Hay Entradas</li>
+    {% endfor %}
+    </ul>
+    </div class=pagination>
+        {%- for page in post_pagination.iter_pages() %}
+            {% if page %}
+                {% if page != post_pagination.page %}
+                    <a href="{{ url_for('public.index', page=page) }}">{{ page }}</a>
+                    {% else %}
+                        <strong>{{ page }}</strong>
+                    {% endif %}
+                {% else %}
+                    <span class=ellipsis>...</span>
+                {% endif %}
+            {%- endfor %}                
+    </div>
+</div>
+{% endblock %}
